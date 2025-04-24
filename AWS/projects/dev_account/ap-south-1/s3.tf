@@ -1,19 +1,27 @@
-resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = "my-tf-devops-bucket-2025"
-  tags = {
-    name        = "project1"
-    environment = "dev"
-  }
+module "s3_bucket" {
+  source              = "../../../modules/s3"
+  bucket_name         = var.bucket_name
   force_destroy       = true
   object_lock_enabled = true
+  status              = "Enabled"
 }
 
-resource "aws_s3_bucket_versioning" "name" {
-  bucket = aws_s3_bucket.my_s3_bucket.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
+# resource "aws_s3_bucket" "my_s3_bucket" {
+#   bucket = "my-tf-devops-bucket-2025"
+#   tags = {
+#     name        = "project1"
+#     environment = "dev"
+#   }
+#   force_destroy       = true
+#   object_lock_enabled = true
+# }
+
+# resource "aws_s3_bucket_versioning" "name" {
+#   bucket = aws_s3_bucket.my_s3_bucket.id
+#   versioning_configuration {
+#     status = "Enabled"
+#   }
+# }
 
 
 # module "s3" {
