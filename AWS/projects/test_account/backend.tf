@@ -1,8 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "value"
-    key = ""
-    region = "value"
-    encrypt = false
+    bucket = "devops2024-terraform-state"
+    key    = "dev/terraform.tfstate"
+    region = "ap-south-1"
   }
 }
